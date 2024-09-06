@@ -161,6 +161,8 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
             grammarVersions.add(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_8);
             grammarVersions.add(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_9);
             grammarVersions.add(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_10);
+            grammarVersions.add(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_11);
+            grammarVersions.add(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_12);
             return Collections.unmodifiableList(grammarVersions);
         }
     
@@ -175,6 +177,8 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
             grammarVersions.add("3.8");
             grammarVersions.add("3.9");
             grammarVersions.add("3.10");
+            grammarVersions.add("3.11");
+            grammarVersions.add("3.12");
             return Collections.unmodifiableList(grammarVersions);
         }
     
@@ -189,6 +193,8 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
             ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_8, "3.8");
             ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_9, "3.9");
             ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_10, "3.10");
+            ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_11, "3.11");
+            ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_12, "3.12");
             return Collections.unmodifiableMap(ret);
         }
     
@@ -203,6 +209,8 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
             ret.put("3.8", IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_8);
             ret.put("3.9", IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_9);
             ret.put("3.10", IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_10);
+            ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_11, "3.11");
+            ret.put(IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_12, "3.12");
             return Collections.unmodifiableMap(ret);
         }
     }
@@ -237,6 +245,12 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
 
         } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_10) {
             return "grammar: Python 3.10";
+
+        } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_11) {
+            return "grammar: Python 3.11";
+
+        } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_12) {
+            return "grammar: Python 3.12";
 
         } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_CYTHON) {
             return "grammar: Cython";
@@ -275,6 +289,12 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
                 break;
             case IPythonNature.GRAMMAR_PYTHON_VERSION_3_10:
                 grammar = new PythonGrammar310(generateTree, in);
+                break;
+            case IPythonNature.GRAMMAR_PYTHON_VERSION_3_11:
+                grammar = new PythonGrammar311(generateTree, in);
+                break;
+            case IPythonNature.GRAMMAR_PYTHON_VERSION_3_12:
+                grammar = new PythonGrammar312(generateTree, in);
                 break;
             //case CYTHON: not treated here (only in reparseDocument).
             default:
