@@ -77,20 +77,19 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
         //Note that we don't have the grammar for all versions, so, we use the one closer to it (which is
         //fine as they're backward compatible).
         switch (grammarVersion) {
-            case "2.0":
-            case "2.1":
-            case "2.2":
-            case "2.3":
-            case "2.4":
-            case "2.5":
-                return GRAMMAR_PYTHON_VERSION_2_5;
+          case "2.0":
+          case "2.1":
+          case "2.2":
+          case "2.3":
+          case "2.4":
+          case "2.5":
+              return GRAMMAR_PYTHON_VERSION_2_5;
 
-            case "2.6":
-                return GRAMMAR_PYTHON_VERSION_2_6;
+          case "2.6":
+              return GRAMMAR_PYTHON_VERSION_2_6;
 
-            case "2.7":
-                return GRAMMAR_PYTHON_VERSION_2_7;
-
+          case "2.7":
+              return GRAMMAR_PYTHON_VERSION_2_7;
             case "3.0":
             case "3.1":
             case "3.2":
@@ -109,6 +108,10 @@ PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 �
                 return GRAMMAR_PYTHON_VERSION_3_9;
             case "3.10":
                 return GRAMMAR_PYTHON_VERSION_3_10;
+            case "3.11":
+                return GRAMMAR_PYTHON_VERSION_3_11;
+            case "3.12":
+                return GRAMMAR_PYTHON_VERSION_3_12;
 
             default:
                 break;
