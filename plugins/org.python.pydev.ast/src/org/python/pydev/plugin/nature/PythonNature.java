@@ -1265,14 +1265,19 @@ public class PythonNature extends AbstractPythonNature implements IPythonNature 
         //Note that we don't have the grammar for all versions, so, we use the one closer to it (which is
         //fine as they're backward compatible).
         switch (grammarVersion) {
-            case "2.0":
-            case "2.1":
-            case "2.2":
-            case "2.3":
-            case "2.4":
-            case "2.5":
-            case "2.6":
-            case "2.7":
+          case "2.0":
+          case "2.1":
+          case "2.2":
+          case "2.3":
+          case "2.4":
+          case "2.5":
+              return GRAMMAR_PYTHON_VERSION_2_5;
+
+          case "2.6":
+              return GRAMMAR_PYTHON_VERSION_2_6;
+
+          case "2.7":
+              return GRAMMAR_PYTHON_VERSION_2_7;
             case "3.0":
             case "3.1":
             case "3.2":
@@ -1306,7 +1311,7 @@ public class PythonNature extends AbstractPythonNature implements IPythonNature 
 
             } else if (grammarVersion.startsWith("2")) {
                 //latest in the 2.x series
-                return LATEST_GRAMMAR_PY3_VERSION;
+                return LATEST_GRAMMAR_PY2_VERSION;
             }
         }
 

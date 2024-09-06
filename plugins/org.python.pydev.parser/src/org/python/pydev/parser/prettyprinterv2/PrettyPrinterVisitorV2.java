@@ -724,7 +724,16 @@ public final class PrettyPrinterVisitorV2 extends PrettyPrinterUtilsV2 {
 
                 if (h.type != null) {
                     int grammarVersion = this.prefs.getGrammarVersion();
-                    doc.addRequire("as", lastNode);
+                    if (grammarVersion < IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_2_6) {
+                        doc.addRequire(",", lastNode);
+
+                    } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_2_6
+                            || grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_2_7) {
+                        doc.addRequireOneOf(lastNode, "as", ",");
+
+                    } else { // Python 3.0 or greater
+                        doc.addRequire("as", lastNode);
+                    }
                 }
                 h.name.accept(this);
             }

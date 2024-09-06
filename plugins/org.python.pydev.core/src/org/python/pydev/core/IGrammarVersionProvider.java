@@ -19,6 +19,21 @@ import java.util.Map;
 import java.util.Set;
 
 public interface IGrammarVersionProvider {
+
+    /**
+     * Constants for knowing the version of a grammar (so that jython 2.1 and python 2.1 can be regarded
+     * as GRAMMAR_PYTHON_VERSION_2_1), so, in short, it does not differentiate among the many flavors of python
+     *
+     * They don't start at 0 because we don't want any accidents... ;-)
+     */
+    public static final int GRAMMAR_PYTHON_VERSION_2_5 = 11;
+    public static final int GRAMMAR_PYTHON_VERSION_2_6 = 12;
+    public static final int GRAMMAR_PYTHON_VERSION_2_7 = 13;
+    public static final int LATEST_GRAMMAR_PY2_VERSION = GRAMMAR_PYTHON_VERSION_2_7;
+
+    /**
+     * Just in case you're wondering, Version 3 is not the latest... it's as if it's a new grammar entirely.
+     */
     public static final int GRAMMAR_PYTHON_VERSION_3_5 = 99;
     public static final int GRAMMAR_PYTHON_VERSION_3_6 = 100;
     public static final int GRAMMAR_PYTHON_VERSION_3_7 = 101;
@@ -28,7 +43,6 @@ public interface IGrammarVersionProvider {
     public static final int GRAMMAR_PYTHON_VERSION_3_11 = 105;
     public static final int GRAMMAR_PYTHON_VERSION_3_12 = 106;
     public static final int LATEST_GRAMMAR_PY3_VERSION = GRAMMAR_PYTHON_VERSION_3_12;
-    public static final int LATEST_GRAMMAR_PY2_VERSION = GRAMMAR_PYTHON_VERSION_3_12;
 
     /**
      * So, no specific reason for the 777 number (just wanted something unique that wouldn't be close to the other grammars).

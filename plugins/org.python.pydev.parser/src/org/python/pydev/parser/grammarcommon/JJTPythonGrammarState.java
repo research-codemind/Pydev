@@ -71,6 +71,31 @@ public final class JJTPythonGrammarState extends AbstractJJTPythonGrammarState i
             created.beginColumn = col;
         }
 
+         // 위 코드 바로 밑에 아래코드 추가
+        int endLine = Integer.MAX_VALUE;
+        int endColumn = Integer.MAX_VALUE;
+        Token lastToken = this.grammar.getJJLastPos();
+        if(lastToken!=null) {
+            if((created.beginLine == lastToken.endLine && created.beginColumn <= lastToken.endColumn) ||
+                    created.beginLine < lastToken.endLine) {
+                endLine = lastToken.endLine;
+                endColumn = lastToken.endColumn;
+            }
+        }
+        Token curToken = this.grammar.getCurrentToken();
+        if(curToken!=null) {
+            if((created.beginLine == curToken.endLine && created.beginColumn <= curToken.endColumn) ||
+                    created.beginLine < curToken.endLine) {
+                if((curToken.endLine == endLine && curToken.endColumn < endColumn) ||
+                    curToken.beginLine < endLine) {
+                    endLine = curToken.endLine;
+                    endColumn = curToken.endColumn;
+                }
+            }
+        }
+        created.endLine = endLine;
+        created.endColumn = endColumn;
+
         ++sp;
     }
 

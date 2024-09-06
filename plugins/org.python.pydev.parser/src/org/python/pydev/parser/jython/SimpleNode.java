@@ -27,6 +27,16 @@ public class SimpleNode implements Node, ISimpleNode {
      * Begins at 1
      */
     public int beginColumn;
+    
+    /**
+     * Ends at 1
+     */
+    public int endLine;
+
+    /**
+     * Ends at 1
+     */
+    public int endColumn;
 
     public SimpleNode parent;
 

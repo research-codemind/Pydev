@@ -105,7 +105,16 @@ public class PyParser extends BaseParser implements IPyParser {
     private final IGrammarVersionProvider grammarVersionProvider;
 
     public static String getGrammarVersionStr(int grammarVersion) {
-        if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_5) {
+        if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_2_5) {
+            return "grammar: Python 2.5";
+
+        } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_2_6) {
+            return "grammar: Python 2.6";
+
+        } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_2_7) {
+            return "grammar: Python 2.7";
+
+        } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_5) {
             return "grammar: Python 3.5";
 
         } else if (grammarVersion == IGrammarVersionProvider.GRAMMAR_PYTHON_VERSION_3_6) {
@@ -502,6 +511,15 @@ public class PyParser extends BaseParser implements IPyParser {
         IGrammar grammar;
         FastCharStream in = new FastCharStream(charArray);
         switch (grammarVersion) {
+            case IPythonNature.GRAMMAR_PYTHON_VERSION_2_5:
+                grammar = new PythonGrammar25(generateTree, in);
+                break;
+            case IPythonNature.GRAMMAR_PYTHON_VERSION_2_6:
+                grammar = new PythonGrammar26(generateTree, in);
+                break;
+            case IPythonNature.GRAMMAR_PYTHON_VERSION_2_7:
+                grammar = new PythonGrammar27(generateTree, in);
+                break;
             case IPythonNature.GRAMMAR_PYTHON_VERSION_3_5:
                 grammar = new PythonGrammar30(generateTree, in);
                 break;
