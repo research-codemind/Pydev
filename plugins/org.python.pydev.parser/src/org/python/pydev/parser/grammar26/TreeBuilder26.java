@@ -46,6 +46,7 @@ import org.python.pydev.parser.jython.ast.With;
 import org.python.pydev.parser.jython.ast.WithItem;
 import org.python.pydev.parser.jython.ast.Yield;
 import org.python.pydev.parser.jython.ast.argumentsType;
+import org.python.pydev.parser.jython.ast.decoratorsType;
 import org.python.pydev.parser.jython.ast.excepthandlerType;
 import org.python.pydev.parser.jython.ast.exprType;
 import org.python.pydev.parser.jython.ast.keywordType;
@@ -187,7 +188,7 @@ public final class TreeBuilder26 extends AbstractTreeBuilder implements ITreeBui
                 argumentsType arguments = makeArguments(stack.nodeArity() - 1);
                 NameTok nameTok = makeNameTok(NameTok.FunctionName);
                 //decorator is always null at this point... it's decorated later on
-                FunctionDef funcDef = new FunctionDef(decsexp, nameTok, arguments, (exprType)null, body, false);
+                FunctionDef funcDef = new FunctionDef((decoratorsType[])null, nameTok, arguments, (exprType)null, body, false);
                 addSpecialsAndClearOriginal(suite, funcDef);
                 setParentForFuncOrClass(body, funcDef);
                 return funcDef;
