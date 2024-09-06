@@ -10,14 +10,20 @@ For developing PyDev see: http://pydev.org/developers.html
 
 For contact, tracker, sponsorship, see: http://www.pydev.org/about.html
 
-## CODEMIND에 맞게 수정
+## 빌드 방법
+1. feature/codemind_v4.5.8 브랜치 checkout
+2. [필수 변경 사항](#필수-변경-사항)들을 적용
+3. `mvn intall` 명령 실행
+4. 패키지 확인후 내부 Maven 서버로 이관
 ---
+
 ### 2.x 지원 방법
 PyDev 10.x.x 부터 Python 2.x 지원을 제거하여 2.x에 대한 데이터 추가가 필요하여 다음과 같은 방법으로 복원 진행
 
 1. 똑같은 리포지토리를 다른 디렉토리에 복제 복제
 2. 9.3.0 릴리즈 버전(`e44ace7e590fe9f92fe6ff90fd32af1d33cd6914`)으로 체크아웃
 3. `GRAMMAR_PYTHON_VERSION_2` 로 검색하여 검색된 내용을 빌드할 디렉토리에 복사 + 붙여넣기를 후 빌드
+---
 
 ### 필수 변경 사항
 1. plugins/org.python.pydev.parser 프로젝트 org.python.pydev.parser.jython.SimpleNode 클래스에 아래 코드 추가
